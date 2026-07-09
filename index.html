@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldian - Interactive Portfolio</title>
     <style>
-        /* Gaya dasar halaman */
         body {
-            background-color: #0f172a; /* Latar belakang biru dongker sangat gelap */
+            background-color: #0f172a;
             color: #a8b2d1;
             font-family: 'Consolas', 'Courier New', monospace;
             margin: 0;
@@ -18,12 +17,11 @@
             overflow: hidden;
         }
 
-        /* Jendela Terminal Modern */
         #terminal {
-            width: 85%;
-            max-width: 850px;
-            height: 70vh;
-            background-color: #1e293b; /* Warna abu-abu gelap kebiruan */
+            width: 90%;
+            max-width: 900px;
+            height: 85vh;
+            background-color: #1e293b;
             border-radius: 10px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             overflow: hidden;
@@ -31,7 +29,6 @@
             flex-direction: column;
         }
 
-        /* Bagian Atas (Header) ala MacOS */
         #header {
             background-color: #334155;
             padding: 10px 15px;
@@ -42,7 +39,6 @@
             font-weight: bold;
         }
 
-        /* Tiga Titik Warna di Pojok Kiri */
         .dots {
             display: flex;
             gap: 8px;
@@ -65,39 +61,48 @@
             letter-spacing: 2px;
         }
 
-        /* Area Konten Teks */
         #content {
             padding: 25px;
             flex-grow: 1;
             overflow-y: auto;
-            font-size: 1.15rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.5;
         }
 
-        /* Warna untuk log sistem buatan */
-        .log-line { color: #38bdf8; /* Biru muda */ }
-        .success { color: #4ade80; /* Hijau */ }
+        .log-line { color: #38bdf8; }
+        .success { color: #4ade80; }
         
-        /* Warna Teks Efek Ketik (Merah) */
         .typing-text {
-            color: #fb7185; /* Merah pastel / coral */
-            text-shadow: 0 0 5px rgba(251, 113, 133, 0.3); /* Efek cahaya tipis */
+            color: #fb7185; 
+            text-shadow: 0 0 5px rgba(251, 113, 133, 0.2); 
+            white-space: pre-wrap; /* Menjaga format spasi agar rapi */
         }
 
-        /* Kursor yang berkedip */
         .cursor {
             display: inline-block;
             background-color: #fb7185;
-            width: 12px;
-            height: 1.15rem;
+            width: 10px;
+            height: 1.1rem;
             vertical-align: text-bottom;
             animation: blink 1s step-end infinite;
-            margin-left: 2px;
+            margin-left: 4px;
         }
 
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
+        }
+        
+        /* Modifikasi scrollbar agar sesuai tema */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569; 
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -110,42 +115,72 @@
             <div class="dot yellow"></div>
             <div class="dot green"></div>
         </div>
-        <div class="title-bar">ALDIAN_OS: PORTFOLIO / VER 1.2</div>
+        <div class="title-bar">ALDIAN_OS: CV & PORTFOLIO / VER 2.0</div>
     </div>
     
     <div id="content">
-        <!-- Log sistem statis untuk estetika -->
         <div class="log-line">[LOGS]: system.diagnostics.check() ... <span class="success">[OK]</span></div>
         <div class="log-line">[LOGS]: core.user.load('aldian') -> <span class="success">success</span></div>
         <div class="log-line">[LOGS]: profile.cv.initialize()</div>
         <br>
         
-        <!-- Area tempat teks diketik -->
         <span class="typing-text" id="typed"></span><span class="cursor"></span>
     </div>
 </div>
 
 <script>
-    // Teks yang akan diketik otomatis. Gunakan \n untuk enter / baris baru.
-    const textToType = "halo, nama saya Aldian.... \nSaya adalah seorang profesional yang berpengalaman di bidang Project Close Out. \nSaat ini sistem sedang memuat riwayat pekerjaan dan portofolio saya....";
+    // Teks CV yang dirangkum. Menggunakan spasi dan \n untuk menjaga kerapian struktur terminal.
+    const textToType = `halo, nama saya Aldian....
+
+> MEMUAT PROFIL UTAMA... [OK]
+Saya adalah lulusan Teknik Perminyakan (Cum Laude) dengan minat kuat di industri migas. 
+Saat ini saya bekerja sebagai Jr. Project Close Out Engineer di PT Pertamina Hulu Mahakam, 
+fokus pada penyelesaian proyek dan dokumentasi teknis.
+
+> MEMUAT RIWAYAT PEKERJAAN TERKINI... [OK]
+1. PT Pertamina Hulu Mahakam (2023 - Sekarang)
+   Posisi : Jr. Project Close Out Engineer (Operation Hub Div.)
+   Tugas  : Penyusunan laporan PPP & COR, presentasi ke SKK Migas, serta koordinasi distribusi dokumen AFE.
+
+2. PT Pertamina Hulu Mahakam (2022 - 2023)
+   Posisi : Apprenticeship (Well Intervention Div.)
+   Tugas  : Analisis data performa sumur dan pengelolaan database Well Integrity area Handil.
+
+3. MigasID.com (2020 - 2022)
+   Posisi : Chief Design Officer (CDO)
+   Tugas  : Mendesain materi promosi dan menjadi pembicara untuk edukasi industri migas.
+
+> MEMUAT PENDIDIKAN & KEAHLIAN... [OK]
+- Pendidikan : STT Migas Balikpapan, S1 Teknik Perminyakan (IPK 3.63)
+- Teknis     : MS Office (Excel, Word, PowerPoint), PROSPER, Adobe (Photoshop, Illustrator).
+- Non-Teknis : Leadership, Problem-solving, & Public Speaking.
+
+> HUBUNGI SAYA... [OK]
+- Email    : aldiansgb@gmail.com
+- LinkedIn : linkedin.com/in/aldianonlinked
+
+Sistem standby. Menunggu perintah selanjutnya...`;
     
     const typedElement = document.getElementById('typed');
     let index = 0;
 
     function typeWriter() {
         if (index < textToType.length) {
-            // Logika untuk mengubah \n menjadi tag <br> agar bisa pindah baris di HTML
             if (textToType.charAt(index) === '\n') {
-                typedElement.innerHTML += '<br><br>';
+                typedElement.innerHTML += '<br>';
             } else {
                 typedElement.innerHTML += textToType.charAt(index);
             }
+            
+            // Auto-scroll ke bawah saat teks diketik melebihi tinggi layar
+            const contentDiv = document.getElementById('content');
+            contentDiv.scrollTop = contentDiv.scrollHeight;
+            
             index++;
-            setTimeout(typeWriter, 40); // Angka 40 adalah kecepatan ketik (milidetik). Ubah jika ingin lebih lambat/cepat.
+            setTimeout(typeWriter, 15); // Kecepatan ketik dipercepat sedikit agar pengunjung tidak bosan menunggu
         }
     }
 
-    // Memulai efek ketik setelah jeda 1 detik (1000 milidetik) agar terasa lebih realistis
     setTimeout(typeWriter, 1000);
 </script>
 
