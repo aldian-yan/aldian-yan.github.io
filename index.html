@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aldian - Interactive Portfolio</title>
+    <style>
+        /* Gaya dasar halaman */
+        body {
+            background-color: #0f172a; /* Latar belakang biru dongker sangat gelap */
+            color: #a8b2d1;
+            font-family: 'Consolas', 'Courier New', monospace;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Jendela Terminal Modern */
+        #terminal {
+            width: 85%;
+            max-width: 850px;
+            height: 70vh;
+            background-color: #1e293b; /* Warna abu-abu gelap kebiruan */
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Bagian Atas (Header) ala MacOS */
+        #header {
+            background-color: #334155;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Tiga Titik Warna di Pojok Kiri */
+        .dots {
+            display: flex;
+            gap: 8px;
+            margin-right: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .title-bar {
+            flex-grow: 1;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        /* Area Konten Teks */
+        #content {
+            padding: 25px;
+            flex-grow: 1;
+            overflow-y: auto;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        /* Warna untuk log sistem buatan */
+        .log-line { color: #38bdf8; /* Biru muda */ }
+        .success { color: #4ade80; /* Hijau */ }
+        
+        /* Warna Teks Efek Ketik (Merah) */
+        .typing-text {
+            color: #fb7185; /* Merah pastel / coral */
+            text-shadow: 0 0 5px rgba(251, 113, 133, 0.3); /* Efek cahaya tipis */
+        }
+
+        /* Kursor yang berkedip */
+        .cursor {
+            display: inline-block;
+            background-color: #fb7185;
+            width: 12px;
+            height: 1.15rem;
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="terminal">
+    <div id="header">
+        <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="title-bar">ALDIAN_OS: PORTFOLIO / VER 1.2</div>
+    </div>
+    
+    <div id="content">
+        <!-- Log sistem statis untuk estetika -->
+        <div class="log-line">[LOGS]: system.diagnostics.check() ... <span class="success">[OK]</span></div>
+        <div class="log-line">[LOGS]: core.user.load('aldian') -> <span class="success">success</span></div>
+        <div class="log-line">[LOGS]: profile.cv.initialize()</div>
+        <br>
+        
+        <!-- Area tempat teks diketik -->
+        <span class="typing-text" id="typed"></span><span class="cursor"></span>
+    </div>
+</div>
+
+<script>
+    // Teks yang akan diketik otomatis. Gunakan \n untuk enter / baris baru.
+    const textToType = "halo, nama saya Aldian.... \nSaya adalah seorang profesional yang berpengalaman di bidang Project Inventory Services (PIS) dan penyusunan Close Out Report (COR). \nSaat ini sistem sedang memuat riwayat pekerjaan, koordinasi proyek, dan portofolio saya....";
+    
+    const typedElement = document.getElementById('typed');
+    let index = 0;
+
+    function typeWriter() {
+        if (index < textToType.length) {
+            // Logika untuk mengubah \n menjadi tag <br> agar bisa pindah baris di HTML
+            if (textToType.charAt(index) === '\n') {
+                typedElement.innerHTML += '<br><br>';
+            } else {
+                typedElement.innerHTML += textToType.charAt(index);
+            }
+            index++;
+            setTimeout(typeWriter, 40); // Angka 40 adalah kecepatan ketik (milidetik). Ubah jika ingin lebih lambat/cepat.
+        }
+    }
+
+    // Memulai efek ketik setelah jeda 1 detik (1000 milidetik) agar terasa lebih realistis
+    setTimeout(typeWriter, 1000);
+</script>
+
+</body>
+</html>
