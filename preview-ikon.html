@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Preview Ikon Web Aldian</title>
+    <style>
+        body {
+            background-color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 200px;
+        }
+        img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            /* Memberikan sedikit bayangan pada ikon agar lebih menonjol */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); 
+        }
+        h3 {
+            margin: 0 0 10px 0;
+            color: #333333;
+            font-size: 1.1rem;
+        }
+        p {
+            margin: 0;
+            color: #777777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Galeri Pratinjau Ikon Favicon</h2>
+    <p>Lihat dan pilih desain yang paling sesuai dengan tema portofolio Anda.</p>
+
+    <div class="gallery">
+        <!-- Pilihan 1 -->
+        <div class="card">
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111111'/><text x='50' y='75' font-family='Courier New, monospace' font-size='75' font-weight='bold' fill='%23fb7185' text-anchor='middle'>A</text></svg>" alt="Icon 1">
+            <h3>Pilihan 1</h3>
+            <p>Tech Enthusiast / Terminal</p>
+        </div>
+
+        <!-- Pilihan 2 -->
+        <div class="card">
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%231a1a1a'/><text x='50' y='72' font-family='Arial, sans-serif' font-size='70' font-weight='bold' fill='%23ffffff' text-anchor='middle'>A</text></svg>" alt="Icon 2">
+            <h3>Pilihan 2</h3>
+            <p>Clean Minimalist (Lingkaran Hitam)</p>
+        </div>
+
+        <!-- Pilihan 3 -->
+        <div class="card">
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%233b82f6'/><text x='50' y='74' font-family='Arial, sans-serif' font-size='75' font-weight='bold' fill='%23ffffff' text-anchor='middle'>A</text></svg>" alt="Icon 3">
+            <h3>Pilihan 3</h3>
+            <p>Corporate Blue (Biru Profesional)</p>
+        </div>
+    </div>
+
+</body>
+</html>
